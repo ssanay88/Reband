@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:title="Home"
+        android:icon="@drawable/nav_home_selector"/>
+    <item
+        android:id="@+id/nav_hiring"
+        android:title="Hiring"
+        android:icon="@drawable/nav_hiring_selector"/>
+    <item
+        android:id="@+id/nav_add"
+        android:title="" />
+    <item
+        android:id="@+id/nav_pool"
+        android:title="Pool"
+        android:icon="@drawable/nav_pool_selector"/>
+    <item
+        android:id="@+id/nav_my_page"
+        android:title="My Page"
+        android:icon="@drawable/nav_my_page_selcetor"/>
+</menu>
