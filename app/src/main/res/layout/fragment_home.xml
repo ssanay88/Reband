@@ -1,15 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_home_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.HomeFragment">
 
-    <TextView
-        android:gravity="center"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="24dp"
-        android:text="Home 화면입니다." />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_search_new_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</FrameLayout>
+            <TextView
+                android:id="@+id/tv_search_new_member_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingStart="10dp"
+                android:text="@string/search_new_member_title_text"
+                android:textColor="@color/blackText"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_search_new_member_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="10dp"
+                android:text="@string/search_new_member_description_text"
+                android:textColor="@color/blackText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_search_new_member_title" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_search_new_member_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/main_btn_bg"
+                android:text="@string/search_new_member_add_btn_text"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_search_new_member_description" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/grayLine" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_recruiting_new_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_recruiting_new_member_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/recruiting_new_member_title_text"
+                android:textColor="@color/blackText"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/rv_recruiting_new_member"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recruiting_new_member"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recruiting_new_member_title"
+                tools:listitem="@layout/vh_recruiting_band" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_show_more_recruiting_band"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/main_btn_bg"
+                android:text="@string/show_more_recruiting_band_btn_text"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_recruiting_new_member" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/grayLine" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_create_new_band"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_create_new_band"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="10dp"
+                android:text="@string/create_new_band_title_text"
+                android:textColor="@color/blackText"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/ib_create_new_band"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/ib_create_new_band"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/main_image_btn_bg"
+                android:padding="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/create_new_band"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/ib_waiting_new_band"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_create_new_band" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ib_waiting_new_band"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/main_image_btn_bg"
+                android:padding="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/waiting_new_band"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ib_create_new_band"
+                app:layout_constraintTop_toBottomOf="@+id/tv_create_new_band" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
+

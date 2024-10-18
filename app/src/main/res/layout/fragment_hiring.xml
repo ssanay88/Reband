@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".fragment.HiringFragment">
 
-    <TextView
-        android:gravity="center"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_hiring_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="24dp"
-        android:text="Hiring 화면입니다." />
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/vh_pool" />
 
 </FrameLayout>

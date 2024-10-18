@@ -4,16 +4,356 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
     tools:context=".fragment.MyPageFragment">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="0dp"
+    <FrameLayout
+        android:id="@+id/fl_mypage_login"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:background="@drawable/kakao_login_large_wide"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- 로그인 안한 상태에서 사용할 레이아웃 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_state_logout_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_state_logout"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/default_image_ic"
+                app:layout_constraintBottom_toTopOf="@+id/btn_state_logout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_state_logout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:text="@string/state_logout_text"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_state_logout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_state_logout"
+                app:layout_constraintTop_toTopOf="@id/iv_state_logout" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_state_logout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_btn_bg"
+                android:text="@string/login_text"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_state_logout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 로그인 상태이지만 프로필 등록을 안한 경우 사용할 레이아웃 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_state_profile_incomplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_state_profile_incomplete"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/default_image_ic"
+                app:layout_constraintBottom_toTopOf="@+id/btn_state_profile_incomplete"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_state_profile_incomplete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:text="닉네임"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_state_profile_incomplete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_state_profile_incomplete"
+                app:layout_constraintTop_toTopOf="@id/iv_state_profile_incomplete" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_state_profile_incomplete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_btn_bg"
+                android:text="@string/profile_register_text"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_state_profile_incomplete" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 로그인 및 프로필 등록까지 완료한 경우 사용할 레이아웃 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_state_profile_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_state_profile_complete"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/default_image_ic"
+                app:layout_constraintBottom_toTopOf="@+id/btn_state_profile_complete"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_state_profile_complete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:text="닉네임"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_profile_summary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_state_profile_complete"
+                app:layout_constraintTop_toTopOf="@id/iv_state_profile_complete" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_profile_summary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="15dp"
+                android:text="기타 * 3년차"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_state_profile_complete"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_state_profile_complete"
+                app:layout_constraintTop_toBottomOf="@+id/tv_state_profile_complete" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_state_profile_complete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/main_btn_bg"
+                android:text="@string/profile_update_text"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_state_profile_complete" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+
+    <!-- 밴드 관리 항목 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_band_management"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fl_mypage_login">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_band_management"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/band_manage_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_band_management"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_band_management"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:drawableEnd="@drawable/arrow_forward"
+            android:text="@string/band_management"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_band_management"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 지원 현황 항목 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_application_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_band_management">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_application_status"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/band_manage_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_application_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_application_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:drawableEnd="@drawable/arrow_forward"
+            android:text="@string/application_status"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_application_status"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 알림 항목 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_application_status">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_notification"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/band_manage_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_notification"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_notification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:drawableEnd="@drawable/arrow_forward"
+            android:text="@string/notification"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_notification"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 공지사항 항목 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_notification">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_notice"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/band_manage_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_notice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_notice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:drawableEnd="@drawable/arrow_forward"
+            android:text="@string/notice"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_notice"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 약관 항목 레이아웃 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_terms_of_use"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_notice">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_terms_of_use"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/band_manage_ic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_terms_of_use"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_terms_of_use"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:drawableEnd="@drawable/arrow_forward"
+            android:text="@string/terms_of_use"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_terms_of_use"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
