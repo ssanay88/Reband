@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Reband</string>
+    <string name="kakao_key">2a5701cd7b1b1056b72ecb2b333886a3</string>
+
+    <string name="drum">드럼</string>
+    <string name="bass">베이스</string>
+    <string name="vocal">보컬</string>
+    <string name="guitar">기타</string>
+    <string name="keyboard">키보드</string>
+    <string name="cancel">취소</string>
+    <string name="register">등록</string>
+
+    <!-- 홈 프래그먼트 -->
+    <string name="search_new_member_title_text">새로운 멤버를 찾고 있나요?</string>
+    <string name="search_new_member_description_text">Reband를 통해 %s개의 밴드가 멤버를 구했어요!\n지금 바로 멤버 모집글을 게시해보세요.</string>
+    <string name="search_new_member_add_btn_text">신규 모집 공고 작성하기</string>
+    <string name="recruiting_new_member_title_text">지금 멤버를 모집중인 밴드에요</string>
+    <string name="show_more_recruiting_band_btn_text">더 많은 모집 공고 보러가기</string>
+    <string name="create_new_band_title_text">신규 밴드를 만들어볼까요?</string>
+
+    <!-- 마이 페이지 프래그먼트 -->
+    <string name="state_logout_text">로그인 후 이용해주세요</string>
+    <string name="login_text">로그인</string>
+    <string name="profile_register_text">프로필 등록</string>
+    <string name="profile_update_text">프로필 수정</string>
+    <string name="band_management">밴드 관리</string>
+    <string name="application_status">지원 현황</string>
+    <string name="notification">알림</string>
+    <string name="notice">공지사항</string>
+    <string name="terms_of_use">이용약관</string>
+
 </resources>
