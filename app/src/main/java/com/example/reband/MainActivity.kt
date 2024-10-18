@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private val mainBinding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+    private var isFabVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +69,16 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.nav_add -> {
-                        Log.d("tngur", "initBottomNavigation")
+                        // TODO 버튼 클릭 이벤트 추가 필요
+                        if (isFabVisible) {
+                            mainBinding.fabRegisterPool.hide()
+                            mainBinding.fabRecruitMember.hide()
+                            isFabVisible = false
+                        } else {
+                            mainBinding.fabRegisterPool.show()
+                            mainBinding.fabRecruitMember.show()
+                            isFabVisible = true
+                        }
                         true
                     }
 

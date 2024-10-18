@@ -40,4 +40,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_main_bottom_nav" />
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_recruit_member"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="밴드원 모집"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:icon="@drawable/recruit_member_ic"
+        app:layout_constraintBottom_toTopOf="@+id/fab_register_pool"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_register_pool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="프로필 등록"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:icon="@drawable/register_pool_ic"
+        app:layout_constraintBottom_toTopOf="@id/main_bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
