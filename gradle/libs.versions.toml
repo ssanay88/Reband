@@ -9,6 +9,9 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.9.2"
 constraintlayout = "2.1.4"
+usermgmt = "1.27.0"
+v2Talk = "2.3.0"
+v2User = "2.20.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -19,6 +22,12 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+usermgmt = { module = "com.kakao.sdk:usermgmt", version.ref = "usermgmt" }
+v2-link = { module = "com.kakao.sdk:v2-link", version.ref = "v2Talk" }
+v2-navi = { module = "com.kakao.sdk:v2-navi", version.ref = "v2Talk" }
+v2-story = { module = "com.kakao.sdk:v2-story", version.ref = "v2Talk" }
+v2-talk = { module = "com.kakao.sdk:v2-talk", version.ref = "v2Talk" }
+v2-user = { module = "com.kakao.sdk:v2-user", version.ref = "v2User" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
