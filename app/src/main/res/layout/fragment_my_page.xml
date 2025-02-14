@@ -17,7 +17,7 @@
 
         <!-- 로그인 안한 상태에서 사용할 레이아웃 -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_state_logout_layout"
+            android:id="@+id/cl_state_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="visible"
@@ -60,6 +60,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_state_logout" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -190,7 +191,7 @@
             android:id="@+id/iv_band_management"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/band_manage_ic"
+            android:src="@drawable/ic_band_management"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_band_management"
             app:layout_constraintStart_toStartOf="parent"
@@ -262,7 +263,7 @@
             android:id="@+id/iv_notification"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/band_manage_ic"
+            android:src="@drawable/ic_notification"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_notification"
             app:layout_constraintStart_toStartOf="parent"
@@ -298,7 +299,7 @@
             android:id="@+id/iv_notice"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/band_manage_ic"
+            android:src="@drawable/ic_notice"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_notice"
             app:layout_constraintStart_toStartOf="parent"
@@ -334,7 +335,7 @@
             android:id="@+id/iv_terms_of_use"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/band_manage_ic"
+            android:src="@drawable/ic_terms_of_service"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_terms_of_use"
             app:layout_constraintStart_toStartOf="parent"
@@ -354,6 +355,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:text="로그아웃"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

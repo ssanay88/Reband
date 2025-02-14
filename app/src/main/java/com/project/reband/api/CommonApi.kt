@@ -4,6 +4,12 @@ class CommonApi {
 
     object Common {
         /**
+         * 로그인 API
+         */
+        const val OAUTH_KAKAO = "/oAuth/kakao"    // 카카오 로그인 후 사용자 정보 조회
+        const val OAUTH_NAVER = "/oAuth/naver"    // 네이버 로그인 후 사용자 정보 조회
+
+        /**
          * 규정 API
          */
         const val TERMS_OF_SERVICE = "/etc/terms-of-service"    // 약관 조회
@@ -45,7 +51,7 @@ class CommonApi {
         const val RECRUITMENT_MODIFY_STATUS = "/recruitment/modify/status"    // 공고 상태 변경
         const val RECRUITMENT_MODIFY_APPLY_STATUS = "/recruitment/modify/apply/status"    // 공고 상태 변경
         const val RECRUITMENT_LIST = "/recruitment/list"    // 공고 목록 조회
-        const val RECRUITMENT_DETAIL = "/recruitment/detail"    // 공고 상세 조회
+        const val RECRUITMENT_DETAIL = "/recruitment/detail/{recruitmentNo}"    // 공고 상세 조회
         const val RECRUITMENT_APPLY_LIST = "/recruitment/apply/list"    // 공고 지원 현황 조회
 
         /**

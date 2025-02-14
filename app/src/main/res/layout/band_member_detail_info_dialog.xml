@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="400dp"
+    android:layout_height="450dp"
+    android:background="@drawable/round_corner_dialog_bg">
+
+    <ImageView
+        android:id="@+id/iv_instrument"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/guitar_ic_128" />
+
+    <TextView
+        android:id="@+id/tv_member_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_instrument"
+        tools:text="양수혁" />
+
+    <TextView
+        android:id="@+id/tv_band_career"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_member_name"
+        tools:text="2년차" />
+
+    <TextView
+        android:id="@+id/tv_band_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/outline_textview_bg"
+        android:drawableEnd="@drawable/ic_youtube"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="6dp"
+        android:text="YOUTUBE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_band_career" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_error_dialog_confirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/mainThemeColor"
+        android:gravity="center"
+        android:paddingHorizontal="90dp"
+        android:paddingVertical="10dp"
+        android:text="닫기"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

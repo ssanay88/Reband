@@ -1,12 +1,22 @@
 package com.project.reband.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.project.reband.data.recruitment.HiringData
+import com.project.reband.network.recruitment.RecruitmentRepository
 import com.project.reband.utils.MutableEventFlow
 import com.project.reband.utils.asEventFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class HiringFragmentViewModel : ViewModel() {
+    private val recruitmentRepository = RecruitmentRepository()
+
+    private val _recruitmentList = MutableStateFlow<List<HiringData.Recruitment>?>(null)
+    val recruitmentList = _recruitmentList.asStateFlow()
 
     private val _btnClickHandler = MutableEventFlow<HireSortBtnClickEvent>()
     val btnClickHandler = _btnClickHandler.asEventFlow()
@@ -21,6 +31,13 @@ class HiringFragmentViewModel : ViewModel() {
         }
     }
 
+    fun getRecruitmentList() {
+        viewModelScope.launch {
+            recruitmentRepository.getRecruitmentList().collectLatest {
+                _recruitmentList.emit(it.recruitmentList)
+            }
+        }
+    }
 }
 
 sealed class HireSortBtnClickEvent {

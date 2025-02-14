@@ -6,6 +6,16 @@ package com.project.reband.data.etc
  * @param name 해시태그
  */
 data class HashTagData(
-    val hashTagNo: Int,
-    val name: String
-)
+    val code: String,
+    val data: HashTagList,
+    val message: String
+) {
+    data class HashTagList(
+        val hashTagList: MutableList<HashTag>
+    ) {
+        data class HashTag(
+            val hashTagNo: Int,
+            val name: String
+        )
+    }
+}

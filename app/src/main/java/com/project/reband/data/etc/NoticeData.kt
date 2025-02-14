@@ -7,7 +7,19 @@ package com.project.reband.data.etc
  * @param content 공지 내용
  */
 data class NoticeData(
-    val noticeNo: Int,
-    val title: String,
-    val content: String
-)
+    val code: String,
+    val data: NoticeList,
+    val message: String
+) {
+    data class NoticeList(
+        val noticeList: MutableList<Notice>
+    ) {
+        data class Notice(
+            val noticeNo: Int,
+            val title: String,
+            val content: String
+        )
+    }
+}
+
+

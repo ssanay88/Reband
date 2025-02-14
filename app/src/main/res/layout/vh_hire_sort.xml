@@ -8,6 +8,10 @@
             name="vm"
             type="com.project.reband.viewmodel.HiringFragmentViewModel" />
 
+        <variable
+            name="vh"
+            type="com.project.reband.viewholder.HireSortVH" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

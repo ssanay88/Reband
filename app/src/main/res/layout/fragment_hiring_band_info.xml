@@ -100,17 +100,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_band_feature_title">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:text="#락" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
-                android:text="#프로 지향" />
 
         </LinearLayout>
 
@@ -135,6 +124,15 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_band_member_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_band_member_title"
+            app:layout_constraintStart_toEndOf="@id/tv_band_member_title"
+            app:layout_constraintTop_toTopOf="@id/tv_band_member_title" />
 
         <LinearLayout
             android:id="@+id/ll_band_member"
@@ -262,17 +260,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_band_introduce_title" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_band_video_title"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_band_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:text="연주 영상"
-        android:textSize="16dp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_band_introduce" />
+        app:layout_constraintTop_toBottomOf="@id/tv_band_introduce">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_band_video_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="연주 영상"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_band_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/outline_textview_bg"
+            android:drawableEnd="@drawable/ic_youtube"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp"
+            android:text="YOUTUBE" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

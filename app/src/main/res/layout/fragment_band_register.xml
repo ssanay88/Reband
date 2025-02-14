@@ -35,8 +35,9 @@
         android:id="@+id/btn_band_thumbnail"
         app:layout_constraintTop_toBottomOf="@id/btn_cancel"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/default_image_ic"
+        android:src="@drawable/ic_photo"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/photo_btn_bg"
         android:layout_width="120dp"
         android:layout_height="120dp"/>
 

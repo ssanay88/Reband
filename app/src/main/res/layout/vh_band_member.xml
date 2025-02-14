@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="8dp">
+
+    <TextView
+        android:id="@+id/tv_member_instrument"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/tv_member_career"
+        app:layout_constraintHorizontal_weight="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        tools:text="키보드" />
+
+    <TextView
+        android:id="@+id/tv_member_career"
+        android:layout_width="0dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_member_name"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="0.2"
+        app:layout_constraintStart_toEndOf="@id/tv_member_instrument"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        tools:text="3년차" />
+
+    <TextView
+        android:id="@+id/tv_member_name"
+        app:layout_constraintEnd_toStartOf="@id/tv_member_detail_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/crown_img"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_weight="0.3"
+        app:layout_constraintStart_toEndOf="@id/tv_member_career"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="양수혁" />
+
+    <TextView
+        android:id="@+id/tv_member_detail_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_weight="0.2"
+        android:textColor="@color/grayText"
+        android:gravity="center"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/gray_round_outline_bg"
+        app:layout_constraintStart_toEndOf="@id/tv_member_name"
+        app:layout_constraintEnd_toStartOf="@id/tv_member_deport"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="상세정보 >" />
+
+    <TextView
+        android:id="@+id/tv_member_deport"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="0.2"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/red_round_btn_bg"
+        android:layout_marginEnd="5dp"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/tv_member_detail_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="추방하기 >" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

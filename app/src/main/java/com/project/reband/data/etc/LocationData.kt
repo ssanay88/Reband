@@ -1,11 +1,28 @@
 package com.project.reband.data.etc
 
-/**
- * 지역 조회
- * @param locationNo 지역 번호
- * @param locationName 지역 이름 (서울 특별시 or 관악구)
- */
-data class LocationData(
+data class LocationFirstDepthData(
+    val code: String,
+    val data: LocationFirstDepth,
+    val message: String
+)
+
+data class LocationFirstDepth(
+    val firstDepthLocationName : MutableList<String>
+)
+
+data class LocationSecondDepthData(
+    val code: String,
+    val data: LocationSecondDepth,
+    val message: String
+)
+
+data class LocationSecondDepth(
+    val locationList: MutableList<Location>
+)
+
+data class Location(
     val locationNo: Int,
     val locationName: String
 )
+
+

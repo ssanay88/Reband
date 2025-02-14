@@ -6,6 +6,7 @@
     <color name="grayBackground">#F2F4F7</color>
     <color name="grayBtnBackgroundColor">#F0F0F5</color>
     <color name="mainThemeColor">#6750A4</color>
+    <color name="darkMainThemeColor">#796750A3</color>
     <color name="blackText">#121217</color>
     <color name="grayLine">#E5E5E5</color>"
     <color name="hiringBandVHBackgroundColor">#F0F0F5</color>
@@ -13,4 +14,14 @@
     <color name="hiringBandSortVHSelectedTextColor">#4D6750A4</color>
     <color name="hiringBandSortVHNotSelectedBackgroundColor">#B36750A4</color>
     <color name="searchFilterTitleTextColor">#98A0B4</color>
+    <color name="red">#BC0000</color>
+    <color name="myApplyStateWaitText">#545353</color>
+    <color name="myApplyStateWaitBackground">#4A545353</color>
+    <color name="myApplyStateCancelText">#B10707</color>
+    <color name="myApplyStateCancelBackground">#4DB10707</color>
+    <color name="myApplyStateRejectText">#B10707</color>
+    <color name="myApplyStateRejectBackground">#4DB10707</color>
+    <color name="myApplyStateCompleteText">#1D8B15</color>
+    <color name="myApplyStateCompleteBackground">#4D1D8B15</color>
+
 </resources>
