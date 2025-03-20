@@ -21,8 +21,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sort_by_latest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:background="@drawable/sort_btn_background"
             android:onClick="@{() -> vm.clickSortLatestBtn()}"
@@ -36,8 +36,8 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_sort_by_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
             android:layout_marginStart="10dp"
             android:background="@drawable/sort_btn_background"
             android:onClick="@{() -> vm.clickSortRegisterBtn()}"

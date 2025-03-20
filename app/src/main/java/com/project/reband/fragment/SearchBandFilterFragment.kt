@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import com.google.gson.Gson
 import com.project.reband.GlobalApplication
 import com.project.reband.R
+import com.project.reband.adapter.LocationSpinnerAdapter
 import com.project.reband.data.etc.LocationSecondDepth
 import com.project.reband.databinding.FragmentSearchBandFilterBinding
 import kotlinx.coroutines.flow.map
@@ -74,9 +75,9 @@ class SearchBandFilterFragment : Fragment() {
             regionList.apply {
                 val locationList = resources.getStringArray(R.array.LocationList)
 
-                val mAdapter = ArrayAdapter(
+                val mAdapter = LocationSpinnerAdapter(
                     requireContext(),
-                    android.R.layout.simple_spinner_item,
+                    R.layout.item_spinner_location,
                     locationList
                 )
                 adapter = mAdapter
@@ -107,9 +108,9 @@ class SearchBandFilterFragment : Fragment() {
                             }
 
                             binding.detailRegionList.apply {
-                                val detailAdapter = ArrayAdapter(
+                                val detailAdapter = LocationSpinnerAdapter(
                                     parent!!.context,
-                                    android.R.layout.simple_spinner_item,
+                                    R.layout.item_spinner_location,
                                     location2List
                                 )
                                 adapter = detailAdapter

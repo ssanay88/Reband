@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.google.gson.Gson
 import com.project.reband.R
+import com.project.reband.adapter.LocationSpinnerAdapter
 import com.project.reband.data.etc.LocationSecondDepth
 import com.project.reband.databinding.FragmentSearchBandFilterBinding
 import com.project.reband.databinding.FragmentSearchPoolFilterBinding
@@ -73,9 +74,9 @@ class SearchPoolFilterFragment : Fragment() {
 
                 val location1List = resources.getStringArray(R.array.LocationList)
 
-                val mAdapter = ArrayAdapter(
+                val mAdapter = LocationSpinnerAdapter(
                     requireContext(),
-                    android.R.layout.simple_spinner_item,
+                    R.layout.item_spinner_location,
                     location1List
                 )
                 adapter = mAdapter
@@ -106,9 +107,9 @@ class SearchPoolFilterFragment : Fragment() {
                             }
 
                             binding.detailRegionList.apply {
-                                val detailAdapter = ArrayAdapter(
+                                val detailAdapter = LocationSpinnerAdapter(
                                     parent!!.context,
-                                    android.R.layout.simple_spinner_item,
+                                    R.layout.item_spinner_location,
                                     location2List
                                 )
                                 adapter = detailAdapter

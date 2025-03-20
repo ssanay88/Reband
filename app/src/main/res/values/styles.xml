@@ -26,4 +26,13 @@
         <item name="android:paddingVertical">6dp</item>
     </style>
 
+    <style name="LocationSpinnerDivideStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="divider"> @color/grayLine</item> <!-- divider 색 -->
+        <item name="android:dividerHeight">1dp</item> <!-- divider 높이 -->
+    </style>
+
+    <style name="LocationSpinnerTheme">
+        <item name="dropDownListViewStyle">@style/LocationSpinnerDivideStyle</item>
+    </style>
+
 </resources>
