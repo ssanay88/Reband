@@ -1,12 +1,15 @@
 package com.project.reband.fragment
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -33,7 +36,6 @@ class HiringDetailFragment(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         lifecycleScope.launch {
-            Log.d("tngur", "getRecruitmentDetail")
             viemodel.getRecruitmentDetail(bandNo)
         }
         super.onCreate(savedInstanceState)
@@ -92,9 +94,6 @@ class HiringDetailFragment(
                         errorDialog.show(requireActivity().supportFragmentManager, "errorDialog")
                     }
                 }
-
-
-
             }
 
             // 문의하기
@@ -110,10 +109,55 @@ class HiringDetailFragment(
     private fun setRecruitmentDetail(data: RecruitmentDetailData.RecruitmentDetail) {
         hiringDetailBinding.apply {
             tvBandName.text = data.bandName
+
             tvBandContent.text = data.content
+
             Glide.with(ivBandThumbnail.context)
-                .load(data.instrumentNo)
+                .load(data.imageUrl)
                 .into(ivBandThumbnail)
+
+            // 지역, 포지션, 조건 넣기
+            data.location.let {
+                val locationTagText = createTextViewWithDrawable(it, R.drawable.location_tag_background)
+                llBandRegion.addView(locationTagText)
+            }
+
+            when (data.instrumentNo) {
+                0 -> "보컬"
+                1 -> "드럼"
+                2 -> "기타"
+                3 -> "키보드"
+                else -> "베이스"
+            }.let {
+                val locationTagText = createTextViewWithDrawable(it, R.drawable.position_tag_background)
+                llBandPosition.addView(locationTagText)
+            }
+
+            when (data.ageGroup) {
+                1 -> "10대"
+                2 -> "20대"
+                3 -> "30대"
+                else -> "상관없음"
+            }.let {
+                val locationTagText = createTextViewWithDrawable(it, R.drawable.condition_tag_background)
+                llBandCondition.addView(locationTagText)
+            }
+
+
+        }
+    }
+
+    private fun createTextViewWithDrawable(text: String, drawableRes: Int): TextView {
+        return TextView(requireContext()).apply {
+            this.text = text
+            textSize = 14f
+            setTypeface(null, Typeface.BOLD)
+            setBackgroundResource(drawableRes)
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            setPadding(20,12,20,12)
         }
     }
 

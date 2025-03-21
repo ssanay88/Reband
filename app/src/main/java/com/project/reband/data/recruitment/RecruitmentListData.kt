@@ -25,7 +25,7 @@ sealed interface HiringData {
         val bandName: String,
         val content: String,
         val imageUrl: String,
-        val hashTagList: List<Int>
+        val hashTagList: List<String>
     ) : HiringData
 
 }

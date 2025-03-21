@@ -21,7 +21,6 @@ class HiringDetailFragmentViewModel : ViewModel() {
         viewModelScope.launch {
             recruitmentRepository.getRecruitmentDetail(recruitmentNo).collectLatest {
                 _recruitmentDetail.emit(it)
-                Log.d("tngur", "data : ${it}")
             }
         }
     }

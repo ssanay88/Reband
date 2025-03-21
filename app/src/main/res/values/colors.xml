@@ -27,5 +27,8 @@
     <color name="naverLoginButtonBackground">#03C75A</color>
     <color name="kakaoLoginButtonBackground">#FEE500</color>
     <color name="kakaoLoginButtonTextColor">#D9000000</color>
+    <color name="locationTagBackgroundColor">#DDCBFF</color>
+    <color name="positionTagBackgroundColor">#EBB6F4</color>
+    <color name="conditionTagBackgroundColor">#F8C0CD</color>
 
 </resources>

@@ -6,6 +6,7 @@ import com.project.reband.data.recruitment.HiringData
 import com.project.reband.data.recruitment.MyApplyEntry
 import com.project.reband.data.recruitment.RecruitmentDetailData
 import com.project.reband.network.talentpool.TalentPoolService
+import com.project.reband.test.getTestRecruitmentDetailList
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.http.Body
@@ -28,16 +29,19 @@ class RecruitmentRepository {
     /**
      * 상세 모집 공고 조회
      */
-    suspend fun getRecruitmentDetail(recruitmentNo: Int): Flow<RecruitmentDetailData.RecruitmentDetail> = flow {
-        val res = recruitmentRepository.getRecruitmentDetail(recruitmentNo)
-        if (res.isSuccessful) {
-            res.body()?.let {
-                emit(it.data)
-                Log.d("tngur", "success : ${it.data}")
-            }
-        } else {
-            Log.d("tngur", "fail : ${res.message()}")
-        }
+    fun getRecruitmentDetail(recruitmentNo: Int): Flow<RecruitmentDetailData.RecruitmentDetail> = flow {
+        // 테스트용
+        val list = getTestRecruitmentDetailList()
+        list.find { it.recruitmentNo == recruitmentNo }?.let { emit(it) }
+//        val res = recruitmentRepository.getRecruitmentDetail(recruitmentNo)
+//        if (res.isSuccessful) {
+//            res.body()?.let {
+//                emit(it.data)
+//                Log.d("tngur", "success : ${it.data}")
+//            }
+//        } else {
+//            Log.d("tngur", "fail : ${res.message()}")
+//        }
     }
 
     /**

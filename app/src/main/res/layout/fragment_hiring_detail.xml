@@ -2,12 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
+    android:paddingTop="12dp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_band_thumbnail"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,16 +43,18 @@
         android:id="@+id/ll_band_region"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
         android:paddingStart="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_band_thumbnail">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="지역" />
+            android:text="지역"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -58,15 +63,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:orientation="horizontal"
         android:paddingStart="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_band_region">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="포지션" />
+            android:text="포지션"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -75,15 +82,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:orientation="horizontal"
         android:paddingStart="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_band_position">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:text="조건" />
+            android:text="조건"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -91,12 +100,8 @@
         android:id="@+id/tv_band_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         android:paddingHorizontal="10dp"
-        android:text="부서진 황금의 그 조각들도 누군가 에겐 당연한 온기도 그저 바라본 채 그저 스쳐간 채 난 오늘로 돌아왔고 애써 미소 짓는 너의 입술에
-아직 남아있는 그 그늘처럼 모두 싸늘하고 너무도 차가워 오직 너와 나의 지금만이 눈부신 오늘밤 이 시간 속에 그보다 빛나는 너의 두 눈에빛나는 크리스탈이 되지못한
-나의 차가운 알루미늄만이 애써 외면해왔던 것들에게 그들과 같은 표정을 지었고 항상 그려왔던 항상 믿어왔던 난 점점 더 멀어지고 세상은 또 그 한순간도
-모질지 않은 날이 없겠지만 화려한 불빛도 따뜻한 벨벳도 없는 오직 너와의 오늘만이 눈부신 오늘밤 이 시간 속에 그보다 빛나는 너의 두 눈에
-빛나는 크리스탈이 되지못한 나의 차가운 알루미늄만이"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_band_condition" />
@@ -105,12 +110,12 @@
         android:id="@+id/btn_inquiry"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="문의하기"
-        android:textStyle="bold"
-        android:textSize="16dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/gray_btn_bg"
+        android:text="문의하기"
+        android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_contact"
         app:layout_constraintStart_toStartOf="parent" />
@@ -119,14 +124,14 @@
         android:id="@+id/btn_contact"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="지원하기"
-        android:textSize="16dp"
         android:layout_marginHorizontal="10dp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/main_btn_bg"
+        android:text="지원하기"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_inquiry" />
 

@@ -10,13 +10,16 @@ data class RecruitmentDetailData(
         val bandNo: Int,
         val bandName: String,
         val instrumentNo: Int,
-        val experience: Int,
+        val minExperience: Int,
+        val maxExperience: Int,
         val gender: String,
         val ageGroup: Int,
         val content: String,
         val contractUrl: String,
         val registerData: String,
-        val updateDate: String
+        val updateDate: String,
+        val location: String,
+        val imageUrl: String
     )
 }
 

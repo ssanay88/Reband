@@ -18,6 +18,7 @@ import com.project.reband.data.recruitment.HiringData
 import com.project.reband.databinding.FragmentHomeBinding
 import com.project.reband.event.HomeClickEvent
 import com.project.reband.network.recruitment.RecruitmentRepository
+import com.project.reband.test.getTestRecruitmentList
 import com.project.reband.viewmodel.HomeFragmentViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
@@ -63,8 +64,12 @@ class HomeFragment : Fragment() {
 
         lifecycleScope.launch {
             viewModel.recruitmentList.collectLatest {
-                val recruitmentList = it as List<HiringData.Recruitment>?
-                if (recruitmentList != null) recruitingBandAdapter.submitList(if (recruitmentList.size >= 3) recruitmentList.subList(0,3) else recruitmentList)
+                // val recruitmentList = it as List<HiringData.Recruitment>?
+                // if (recruitmentList != null) recruitingBandAdapter.submitList(if (recruitmentList.size >= 3) recruitmentList.subList(0,3) else recruitmentList)
+
+                // 테스트용 데이터 입력
+                val testRecruitmentList = getTestRecruitmentList()
+                if (testRecruitmentList != null) recruitingBandAdapter.submitList(if (testRecruitmentList.size >= 3) testRecruitmentList.subList(0,3) else testRecruitmentList)
             }
         }
 

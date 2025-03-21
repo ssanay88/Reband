@@ -15,6 +15,7 @@ import com.project.reband.R
 import com.project.reband.adapter.HiringFragmentAdapter
 import com.project.reband.data.recruitment.HiringData
 import com.project.reband.databinding.FragmentHiringBinding
+import com.project.reband.test.getTestRecruitmentList
 import com.project.reband.viewmodel.HiringFragmentViewModel
 import com.project.reband.viewmodel.HireSortBtnClickEvent
 import kotlinx.coroutines.flow.collectLatest
@@ -88,10 +89,12 @@ class HiringFragment() : Fragment() {
         lifecycleScope.launch {
             viewModel.recruitmentList.collectLatest {
                 if (it != null) {
-                    val list = mutableListOf<HiringData>().apply {
-                        add(HiringData.HireSortData)
-                        addAll(it)
-                    }
+//                    val list = mutableListOf<HiringData>().apply {
+//                        add(HiringData.HireSortData)
+//                        addAll(it)
+//                    }
+//                    hiringBandAdapter.submitList(list)
+                    val list = getTestRecruitmentList()
                     hiringBandAdapter.submitList(list)
                 }
             }
