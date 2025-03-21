@@ -43,9 +43,10 @@ class PoolFragment : Fragment() {
                     is PoolSortBtnClickEvent.ClickFilterBtn -> {
                         val fragmentManager = requireActivity().supportFragmentManager
                         val transaction = fragmentManager.beginTransaction()
-                        transaction.replace(R.id.main_fragment_container, SearchPoolFilterFragment())
-                        transaction.addToBackStack(null)
-                        transaction.commit()
+                        transaction
+                            .replace(R.id.main_fragment_container, SearchPoolFilterFragment())
+                            .addToBackStack(null)
+                            .commit()
                     }
                     is PoolSortBtnClickEvent.ClickSortLatestBtn -> {
                         // TODO 최신순 정렬

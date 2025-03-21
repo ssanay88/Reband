@@ -349,5 +349,7 @@
         <item>중구</item>
         <item>중랑구</item>
     </string-array>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="search_band_name">밴드명을 입력해주세요</string>
 
 </resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "673452950672",
+    "project_id": "reband-55a53",
+    "storage_bucket": "reband-55a53.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673452950672:android:199e3d0dab1e1df44f4415",
+        "android_client_info": {
+          "package_name": "com.project.reband"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673452950672-g1lcjv5rp5cir5o2c0214ne7vr248l4m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhjEhWLcKhHEUM3ZfOtanKXP_FRz6-dL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673452950672-g1lcjv5rp5cir5o2c0214ne7vr248l4m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

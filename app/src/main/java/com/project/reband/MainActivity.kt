@@ -87,7 +87,8 @@ class MainActivity : AppCompatActivity() {
                 when (item.itemId) {
                     R.id.nav_home -> {
                         supportFragmentManager.beginTransaction()
-                            .replace(R.id.main_fragment_container, HomeFragment()).commit()
+                            .replace(R.id.main_fragment_container, HomeFragment())
+                            .commit()
                         true
                     }
 
@@ -136,7 +137,9 @@ class MainActivity : AppCompatActivity() {
                             dataStore.userGrade.collect {
                                 if (it == "LEADER") {
                                     supportFragmentManager.beginTransaction()
-                                        .replace(R.id.main_fragment_container, HiringRegisterFragment()).commit()
+                                        .replace(R.id.main_fragment_container, HiringRegisterFragment())
+                                        .addToBackStack(null)
+                                        .commit()
                                 } else {
                                     val errorDialog = ErrorDialog(
                                         title = "오류",
@@ -151,7 +154,9 @@ class MainActivity : AppCompatActivity() {
                                 content = "소속된 밴드가 없습니다.\n밴드를 등록하시겠습니까?",
                                 confirmCallback = {
                                     supportFragmentManager.beginTransaction()
-                                        .replace(R.id.main_fragment_container, BandRegisterFragment()).commit()
+                                        .replace(R.id.main_fragment_container, BandRegisterFragment())
+                                        .addToBackStack(null)
+                                        .commit()
                                 }
                             )
                             confirmDialog.show(supportFragmentManager, "confirmDialog")
@@ -189,7 +194,9 @@ class MainActivity : AppCompatActivity() {
                                         content = "프로필 등록 후 이용 가능합니다.\n지금 등록하시겠습니까?",
                                         confirmCallback = {
                                             supportFragmentManager.beginTransaction()
-                                                .replace(R.id.main_fragment_container, ProfileRegisterFragment()).commit()
+                                                .replace(R.id.main_fragment_container, ProfileRegisterFragment())
+                                                .addToBackStack(null)
+                                                .commit()
                                         }
                                     )
                                     confirmDialog.show(supportFragmentManager, "confirmDialog")

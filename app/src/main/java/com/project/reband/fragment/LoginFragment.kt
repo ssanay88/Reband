@@ -6,9 +6,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.credentials.GetCredentialRequest
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
@@ -78,10 +80,6 @@ class LoginFragment: Fragment() {
 
 
         binding.apply {
-
-            btnBack.setOnClickListener {
-                requireActivity().supportFragmentManager.popBackStack()
-            }
 
             // 카카오 로그인
             btnKakaoLogin.setOnClickListener {

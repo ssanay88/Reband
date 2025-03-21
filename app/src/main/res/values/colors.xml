@@ -6,6 +6,7 @@
     <color name="grayBackground">#F2F4F7</color>
     <color name="grayBtnBackgroundColor">#F0F0F5</color>
     <color name="mainThemeColor">#6750A4</color>
+    <color name="loginActivityTextColor">#9B8FC5</color>
     <color name="darkMainThemeColor">#796750A3</color>
     <color name="blackText">#121217</color>
     <color name="grayLine">#E5E5E5</color>"
@@ -23,5 +24,8 @@
     <color name="myApplyStateRejectBackground">#4DB10707</color>
     <color name="myApplyStateCompleteText">#1D8B15</color>
     <color name="myApplyStateCompleteBackground">#4D1D8B15</color>
+    <color name="naverLoginButtonBackground">#03C75A</color>
+    <color name="kakaoLoginButtonBackground">#FEE500</color>
+    <color name="kakaoLoginButtonTextColor">#D9000000</color>
 
 </resources>
