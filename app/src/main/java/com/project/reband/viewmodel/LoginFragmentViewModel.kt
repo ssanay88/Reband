@@ -21,7 +21,7 @@ class LoginFragmentViewModel: ViewModel() {
 
     fun getUserInfoKakao(accessToken: String, refreshToken: String) {
         viewModelScope.launch {
-            loginLoading()
+            // loginLoading()
             etcRepository.getUserInfoKakao(accessToken, refreshToken).collectLatest {
                 _userInfo.emit(it.data)
             }
@@ -30,7 +30,7 @@ class LoginFragmentViewModel: ViewModel() {
 
     fun getUserInfoNaver(accessToken: String, refreshToken: String) {
         viewModelScope.launch {
-            loginLoading()
+            // loginLoading()
             etcRepository.getUserInfoNaver(accessToken, refreshToken).collectLatest {
                 _userInfo.emit(it.data)
                 Log.d("tngur", "로그인 성공 token ${it.data}")
@@ -44,14 +44,14 @@ class LoginFragmentViewModel: ViewModel() {
         }
     }
 
-    fun loginLoading() = setLoginResult(LoginResult.Loading)
-    fun loginSuccess() = setLoginResult(LoginResult.Success)
-    fun loginError() = setLoginResult(LoginResult.Error)
+//    fun loginLoading() = setLoginResult(LoginResult.Loading)
+//    fun loginSuccess() = setLoginResult(LoginResult.Success)
+//    fun loginError() = setLoginResult(LoginResult.Error)
 
 }
 
-sealed interface LoginResult {
-    object Loading : LoginResult
-    object Success : LoginResult
-    object Error : LoginResult
-}
+//sealed interface LoginResult {
+//    object Loading : LoginResult
+//    object Success : LoginResult
+//    object Error : LoginResult
+//}

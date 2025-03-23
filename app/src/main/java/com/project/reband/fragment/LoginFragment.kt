@@ -56,7 +56,7 @@ class LoginFragment: Fragment() {
                         setUserGrade(it.bandInfo.grade)
                         setBandName(it.bandInfo.bandName)
                     }
-                    viewModel.loginSuccess()
+                    // viewModel.loginSuccess()
                 }
             }
         }
@@ -103,7 +103,7 @@ class LoginFragment: Fragment() {
                     val refreshToken = NaverIdLoginSDK.getRefreshToken() ?: ""
                     if (accessToken.isNotEmpty() && refreshToken.isNotEmpty()) {
                         Log.d("tngur", "naver - access : ${accessToken} , refresh : ${refreshToken}")
-                        viewModel.getUserInfoNaver(accessToken, refreshToken)
+                        // viewModel.getUserInfoNaver(accessToken, refreshToken)
                     }
 
                 }
@@ -122,7 +122,7 @@ class LoginFragment: Fragment() {
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 Log.e("tngur", "1. 카카오계정으로 로그인 실패", error)
-                viewModel.loginError()
+                // viewModel.loginError()
             } else if (token != null) {
                 Log.i("tngur", "카카오계정으로 로그인 성공 ${token.accessToken}")
             }
@@ -132,7 +132,7 @@ class LoginFragment: Fragment() {
             userApiClient.loginWithKakaoTalk(context) { token, error ->
                 if (error != null) {
                     Log.e("tngur", "2. 카카오톡으로 로그인 실패", error)
-                    viewModel.loginError()
+                    // viewModel.loginError()
 
                     // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
                     // 의도적인 로그인 취소로 보고 카카오계정으로 로그인 시도 없이 로그인 취소로 처리 (예: 뒤로 가기)
@@ -144,7 +144,7 @@ class LoginFragment: Fragment() {
                     userApiClient.loginWithKakaoAccount(context, callback = callback)
                 } else if (token != null) {
                     Log.i("tngur", "카카오톡으로 로그인 성공 ${token.accessToken} , ${token.refreshToken}")
-                    viewModel.getUserInfoKakao(token.accessToken, token.refreshToken)
+                    // viewModel.getUserInfoKakao(token.accessToken, token.refreshToken)
 
                 }
             }
