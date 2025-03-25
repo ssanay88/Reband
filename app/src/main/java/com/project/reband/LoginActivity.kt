@@ -1,17 +1,11 @@
 package com.project.reband
 
-import android.app.Activity.RESULT_CANCELED
-import android.app.Activity.RESULT_OK
+
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -42,21 +36,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.lifecycleScope
-import com.google.firebase.Firebase
-import com.google.firebase.database.database
-import com.kakao.sdk.auth.model.OAuthToken
-import com.kakao.sdk.common.model.ClientError
-import com.kakao.sdk.common.model.ClientErrorCause
-import com.kakao.sdk.user.UserApiClient
-import com.navercorp.nid.NaverIdLoginSDK
+import com.project.reband.network.etc.EtcRepository
 import com.project.reband.ui.theme.RebandTheme
 import com.project.reband.viewmodel.LoginActivityViewModel
 import com.project.reband.viewmodel.LoginResult
-import kotlinx.coroutines.Dispatchers
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
+@AndroidEntryPoint
 class LoginActivity : ComponentActivity() {
 
     private val viewModel: LoginActivityViewModel by viewModels()
@@ -113,6 +101,9 @@ class LoginActivity : ComponentActivity() {
 
 @Composable
 fun LoginScreen(modifier: Modifier = Modifier, viewModel: LoginActivityViewModel) {
+
+    val context = LocalContext.current
+
     Surface(
         color = colorResource(R.color.mainThemeColor)
     ) {
@@ -145,7 +136,7 @@ fun LoginScreen(modifier: Modifier = Modifier, viewModel: LoginActivityViewModel
                 contentDescription = null,
                 modifier = Modifier.fillMaxWidth().height(80.dp).padding(vertical = 4.dp)
                     .clickable {
-                        startKakaoLogin(viewModel)
+                        viewModel.startKakaoLogin(context)
                     }
             )
             Image(
@@ -153,7 +144,7 @@ fun LoginScreen(modifier: Modifier = Modifier, viewModel: LoginActivityViewModel
                 contentDescription = null,
                 modifier = Modifier.fillMaxWidth().height(86.dp).padding(vertical = 4.dp)
                     .clickable {
-                        startNaverLogin(viewModel)
+                        viewModel.startNaverLogin(context)
                     }
             )
             Text(
@@ -165,75 +156,13 @@ fun LoginScreen(modifier: Modifier = Modifier, viewModel: LoginActivityViewModel
 
         }
     }
-
 }
-
-
-private fun startKakaoLogin(vm: LoginActivityViewModel) {
-    val context = LocalContext.current
-
-    val userApiClient = UserApiClient.instance
-    // 카카오계정으로 로그인 공통 callback 구성
-    // 카카오톡으로 로그인 할 수 없어 카카오계정으로 로그인할 경우 사용됨
-    val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
-        if (error != null) {
-            Log.e("tngur", "1. 카카오계정으로 로그인 실패", error)
-        } else if (token != null) {
-            Log.i("tngur", "카카오계정으로 로그인 성공 ${token.accessToken}")
-        }
-    }
-
-    // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
-    if (userApiClient.isKakaoTalkLoginAvailable(context)) {
-        userApiClient.loginWithKakaoTalk(context) { token, error ->
-            if (error != null) {
-                // 사용자가 카카오톡 설치 후 디바이스 권한 요청 화면에서 로그인을 취소한 경우,
-                // 의도적인 로그인 취소로 보고 카카오계정으로 로그인 시도 없이 로그인 취소로 처리 (예: 뒤로 가기)
-                if (error is ClientError && error.reason == ClientErrorCause.Cancelled) {
-                    return@loginWithKakaoTalk
-                }
-                // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인 시도
-                userApiClient.loginWithKakaoAccount(context, callback = callback)
-            } else if (token != null) {
-                Log.i("tngur", "카카오톡으로 로그인 성공 ${token.accessToken} , ${token.refreshToken}")
-                vm.getUserInfoKakao(token.accessToken, token.refreshToken)
-            }
-        }
-    } else {
-        userApiClient.loginWithKakaoAccount(context, callback = callback)
-    }
-}
-
-
-private fun startNaverLogin(vm: LoginActivityViewModel) {
-    val context = LocalContext.current
-
-    val launcher = rememberLauncherForActivityResult<Intent, ActivityResult>(ActivityResultContracts.StartActivityForResult()) { result ->
-        when (result.resultCode) {
-            RESULT_OK -> {
-                // 네이버 로그인 인증이 성공했을 때 수행
-                val accessToken = NaverIdLoginSDK.getAccessToken() ?: ""
-                val refreshToken = NaverIdLoginSDK.getRefreshToken() ?: ""
-                if (accessToken.isNotEmpty() && refreshToken.isNotEmpty()) {
-                    vm.getUserInfoNaver(accessToken, refreshToken)
-                }
-            }
-            RESULT_CANCELED -> {
-                Toast.makeText(context,"로그인 실패",Toast.LENGTH_LONG).show()
-            }
-        }
-    }
-
-    NaverIdLoginSDK.authenticate(context, launcher)
-}
-
-
 
 
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
     RebandTheme {
-        LoginScreen(Modifier, viewModel = LoginActivityViewModel())
+        LoginScreen(Modifier, viewModel = LoginActivityViewModel(etcRepository = EtcRepository()))
     }
 }
