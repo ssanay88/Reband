@@ -4,6 +4,9 @@ plugins {
     kotlin("plugin.serialization") version "2.1.0"
     id("com.google.gms.google-services")
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -100,5 +103,9 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
 
 }
+
