@@ -24,9 +24,11 @@ sealed interface PoolData {
     data class TalentPool(
         val no: Int,
         val title: String,
+        val instrument: String,
         val content: String,
         val experience: Int,
         val location: String,
-        val hashTagList: List<HashTagData>
+        val image: String,
+        val hashTagList: List<String>
     ) : PoolData
 }

@@ -16,8 +16,8 @@ data class TalentPoolDetailData(
         val location: String,
         val instrument: String,
         val experience: Int,
-        val days: MutableList<String>,
-        val hashTags: MutableList<HashTagData.HashTagList.HashTag>,
+        val days: List<String>,
+        val hashTags: List<String>,
         val mediaUrl: String,
         val introduce: String,
         val chatUrl: String

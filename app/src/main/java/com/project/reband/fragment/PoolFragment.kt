@@ -15,11 +15,14 @@ import com.project.reband.adapter.PoolFragmentAdapter
 import com.project.reband.data.recruitment.HiringData
 import com.project.reband.data.talentpool.PoolData
 import com.project.reband.databinding.FragmentPoolBinding
+import com.project.reband.test.getTestTalentPoolList
 import com.project.reband.viewmodel.PoolFragmentViewModel
 import com.project.reband.viewmodel.PoolSortBtnClickEvent
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class PoolFragment : Fragment() {
 
     private val poolBinding: FragmentPoolBinding by lazy {
@@ -74,9 +77,13 @@ class PoolFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.talentPool.collectLatest {
                 if (it != null) {
+//                    val list = mutableListOf<PoolData>().apply {
+//                        add(PoolData.TalentPoolSortData)
+//                        addAll(it)
+//                    }
                     val list = mutableListOf<PoolData>().apply {
                         add(PoolData.TalentPoolSortData)
-                        addAll(it)
+                        addAll(getTestTalentPoolList())
                     }
                     poolFragmentList.apply {
                         clear()

@@ -12,9 +12,11 @@ import com.project.reband.R
 import com.project.reband.data.talentpool.PoolData
 import com.project.reband.databinding.FragmentPoolDetailBinding
 import com.project.reband.viewmodel.PoolDetailFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class PoolDetailFragment(
     private val poolNo : Int
 ): Fragment() {
@@ -43,10 +45,15 @@ class PoolDetailFragment(
             viewModel.poolDetail.collectLatest { data ->
                 if (data != null) {
                     poolDetailBinding.apply {
+
                         tvPositionValue.text = data.instrument
+
                         tvCareerValue.text = data.experience.toString() + "년차"
+
                         tvRegionValue.text = data.location
+
                         tvIntroduceValue.text = data.introduce
+
                         for (day in data.days) {
                             changeDaysView(day)
                         }
@@ -77,43 +84,43 @@ class PoolDetailFragment(
 
     private fun changeDaysView(day: String) {
         when (day) {
-            "MON" -> {
+            "월" -> {
                 poolDetailBinding.tvMonday.apply {
                     setBackgroundResource(R.drawable.toggle_selected_btn_bg)
                     setTextColor(resources.getColor(R.color.white))
                 }
             }
-            "TUE" -> {
+            "화" -> {
                 poolDetailBinding.tvTuesday.apply {
                     setBackgroundResource(R.drawable.toggle_selected_btn_bg)
                     setTextColor(resources.getColor(R.color.white))
                 }
             }
-            "WED" -> {
+            "수" -> {
                 poolDetailBinding.tvWednesday.apply {
                     setBackgroundResource(R.drawable.toggle_selected_btn_bg)
                     setTextColor(resources.getColor(R.color.white))
                 }
             }
-            "THU" -> {
+            "목" -> {
                 poolDetailBinding.tvThursday.apply {
                     setBackgroundResource(R.drawable.toggle_selected_btn_bg)
                     setTextColor(resources.getColor(R.color.white))
                 }
             }
-            "FRI" -> {
+            "금" -> {
                 poolDetailBinding.tvFriday.apply {
                     setBackgroundResource(R.drawable.toggle_selected_btn_bg)
                     setTextColor(resources.getColor(R.color.white))
                 }
             }
-            "SAT" -> {
+            "토" -> {
                 poolDetailBinding.tvSaturday.apply {
                     setBackgroundResource(R.drawable.toggle_selected_btn_bg)
                     setTextColor(resources.getColor(R.color.white))
                 }
             }
-            "SUN" -> {
+            "일" -> {
                 poolDetailBinding.tvSunday.apply {
                     setBackgroundResource(R.drawable.toggle_selected_btn_bg)
                     setTextColor(resources.getColor(R.color.white))

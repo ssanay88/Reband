@@ -21,7 +21,6 @@ class PoolDetailFragmentViewModel : ViewModel() {
         viewModelScope.launch {
             talentPoolRepository.getTalentPoolDetail(poolNo).collectLatest {
                 _poolDetail.emit(it)
-                Log.d("tngur", "talentPooil : ${it}")
             }
         }
     }

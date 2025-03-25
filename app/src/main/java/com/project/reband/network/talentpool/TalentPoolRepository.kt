@@ -3,6 +3,7 @@ package com.project.reband.network.talentpool
 import com.project.reband.RetrofitService
 import com.project.reband.data.talentpool.PoolData
 import com.project.reband.data.talentpool.TalentPoolDetailData
+import com.project.reband.test.getTestTalentPoolDetailList
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -26,12 +27,16 @@ class TalentPoolRepository() {
      * 인재풀 상세 정보 조회
      */
     suspend fun getTalentPoolDetail(poolNo: Int): Flow<TalentPoolDetailData.TalentPoolDetail> = flow {
-        val res = apis.getTalentPoolDetail(poolNo)
-        if (res.isSuccessful) {
-            res.body()?.let {
-                emit(it.data)
-            }
+        val testData = getTestTalentPoolDetailList().find { it.no == poolNo }
+        testData?.let {
+            emit(testData)
         }
+//        val res = apis.getTalentPoolDetail(poolNo)
+//        if (res.isSuccessful) {
+//            res.body()?.let {
+//                emit(it.data)
+//            }
+//        }
     }
 
     /**
