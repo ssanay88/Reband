@@ -38,6 +38,12 @@ class ConfirmDialog(
             dismiss()
         }
 
+        dialog?.apply {
+            setCancelable(true)
+            setCanceledOnTouchOutside(true)
+            window?.setBackgroundDrawableResource(android.R.color.transparent)
+        }
+
         return view
     }
 
