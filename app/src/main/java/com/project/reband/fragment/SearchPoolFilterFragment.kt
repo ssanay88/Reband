@@ -14,7 +14,9 @@ import com.project.reband.adapter.LocationSpinnerAdapter
 import com.project.reband.data.etc.LocationSecondDepth
 import com.project.reband.databinding.FragmentSearchBandFilterBinding
 import com.project.reband.databinding.FragmentSearchPoolFilterBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchPoolFilterFragment : Fragment() {
 
     private val binding: FragmentSearchPoolFilterBinding by lazy {

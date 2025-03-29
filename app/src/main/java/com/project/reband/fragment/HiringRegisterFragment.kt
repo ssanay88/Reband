@@ -9,15 +9,17 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.project.reband.databinding.FragmentHiringRegisterBinding
 import com.project.reband.viewmodel.HiringRegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class HiringRegisterFragment : Fragment() {
 
     private val binding : FragmentHiringRegisterBinding by lazy {
         FragmentHiringRegisterBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: HiringRegisterViewModel by viewModels()
+    private val viewModel by viewModels<HiringRegisterViewModel>()
 
     private var instrument: String = ""
     private var minExperience: Int = 0

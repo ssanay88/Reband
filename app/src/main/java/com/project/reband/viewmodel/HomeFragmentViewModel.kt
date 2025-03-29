@@ -10,16 +10,19 @@ import com.project.reband.data.etc.HashTagData
 import com.project.reband.data.etc.InstrumentData
 import com.project.reband.data.recruitment.HiringData
 import com.project.reband.event.HomeClickEvent
-import com.project.reband.network.band.BandRepository
 import com.project.reband.network.recruitment.RecruitmentRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeFragmentViewModel : ViewModel() {
-    private val recruitmentRepository = RecruitmentRepository()
+@HiltViewModel
+class HomeFragmentViewModel @Inject constructor(
+    private val recruitmentRepository: RecruitmentRepository
+) : ViewModel() {
 
     private val _recruitmentList = MutableStateFlow<MutableList<HiringData.Recruitment>?>(null)
     val recruitmentList = _recruitmentList.asStateFlow()

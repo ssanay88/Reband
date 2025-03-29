@@ -1,22 +1,21 @@
 package com.project.reband.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.project.reband.data.etc.HashTagData
 import com.project.reband.data.etc.InstrumentData
-import com.project.reband.data.etc.LocationFirstDepth
-import com.project.reband.data.etc.LocationSecondDepth
 import com.project.reband.network.main.MainRepository
-import kotlinx.coroutines.async
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.forEach
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
-    private val mainRepository = MainRepository()
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val mainRepository: MainRepository
+) : ViewModel() {
 
     private val _instrumentList = MutableStateFlow<InstrumentData.InstrumentList?>(null)
     val instrumentList = _instrumentList.asStateFlow()

@@ -10,15 +10,17 @@ import androidx.lifecycle.lifecycleScope
 import com.project.reband.databinding.FragmentMyBandMemberBinding
 import com.project.reband.viewmodel.MybandMemberBtnClickEvent
 import com.project.reband.viewmodel.MybandMemberFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MybandMemberFragment: Fragment() {
 
     private val binding : FragmentMyBandMemberBinding by lazy {
         FragmentMyBandMemberBinding.inflate(layoutInflater)
     }
 
-    private val viewModel : MybandMemberFragmentViewModel by viewModels()
+    private val viewModel by viewModels<MybandMemberFragmentViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

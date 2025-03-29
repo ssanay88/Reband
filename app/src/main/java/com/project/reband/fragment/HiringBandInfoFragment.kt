@@ -12,9 +12,11 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.project.reband.databinding.FragmentHiringBandInfoBinding
 import com.project.reband.viewmodel.HiringBandInfoViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class HiringBandInfoFragment(
     private val bandNo: Int
 ) : Fragment() {
@@ -23,7 +25,7 @@ class HiringBandInfoFragment(
         FragmentHiringBandInfoBinding.inflate(layoutInflater)
     }
 
-    private val viewModel : HiringBandInfoViewModel by viewModels()
+    private val viewModel by viewModels<HiringBandInfoViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

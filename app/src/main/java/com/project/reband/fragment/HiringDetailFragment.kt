@@ -21,9 +21,11 @@ import com.project.reband.data.recruitment.HiringData
 import com.project.reband.data.recruitment.RecruitmentDetailData
 import com.project.reband.databinding.FragmentHiringDetailBinding
 import com.project.reband.viewmodel.HiringDetailFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class HiringDetailFragment(
     private val bandNo : Int
 ) : Fragment() {
@@ -32,11 +34,11 @@ class HiringDetailFragment(
         FragmentHiringDetailBinding.inflate(layoutInflater)
     }
 
-    private val viemodel: HiringDetailFragmentViewModel by viewModels()
+    private val viewModel by viewModels<HiringDetailFragmentViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         lifecycleScope.launch {
-            viemodel.getRecruitmentDetail(bandNo)
+            viewModel.getRecruitmentDetail(bandNo)
         }
         super.onCreate(savedInstanceState)
     }
@@ -49,7 +51,7 @@ class HiringDetailFragment(
     ): View? {
 
         lifecycleScope.launch {
-            viemodel.recruitmentDetail.collect {
+            viewModel.recruitmentDetail.collect {
                 it?.let {
                     setRecruitmentDetail(it)
                 }
@@ -71,9 +73,9 @@ class HiringDetailFragment(
                         if (bandNo == "") {
                             val confirmDialog = ConfirmDialog(
                                 title = "밴드 지원",
-                                content = "${viemodel.recruitmentDetail.value?.bandName}에 \n지원하시겠습니까?",
+                                content = "${viewModel.recruitmentDetail.value?.bandName}에 \n지원하시겠습니까?",
                                 confirmCallback = {
-                                    viemodel.recruitmentDetail.value?.recruitmentNo?.let { recruitmentNo ->
+                                    viewModel.recruitmentDetail.value?.recruitmentNo?.let { recruitmentNo ->
                                         contactBand(recruitmentNo)
                                     }
                                 }
@@ -162,7 +164,7 @@ class HiringDetailFragment(
     }
 
     private fun contactBand(recruitmentNo: Int) {
-        viemodel.applyRecruitment(recruitmentNo)
+        viewModel.applyRecruitment(recruitmentNo)
         val errorDialog = ErrorDialog(
             title = "밴드 지원 완료",
             content = "지원이 완료되었습니다.\n밴드장 승인 후 가입 처리됩니다."
@@ -172,7 +174,7 @@ class HiringDetailFragment(
 
     private fun openKakaoTalk() {
         if (getPackageList()) {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(viemodel.recruitmentDetail.value?.contractUrl))
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(viewModel.recruitmentDetail.value?.contractUrl))
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
         } else {

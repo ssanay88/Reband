@@ -1,17 +1,15 @@
 package com.project.reband.network.etc
 
-import android.util.Log
 import com.project.reband.RetrofitService
-import com.project.reband.data.etc.HashTagData
-import com.project.reband.data.etc.InstrumentData
 import com.project.reband.data.etc.NoticeData
 import com.project.reband.data.etc.NotificationData
 import com.project.reband.data.etc.TermsOfServiceData
 import com.project.reband.data.user.UserInfoData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class EtcRepository {
+class EtcRepository @Inject constructor() {
     private val apis = RetrofitService.retrofit.create(EtcService::class.java)
 
     /**

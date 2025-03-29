@@ -13,14 +13,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.project.reband.databinding.FragmentBandRegisterBinding
 import com.project.reband.viewmodel.BandRegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BandRegisterFragment : Fragment() {
 
     private val binding: FragmentBandRegisterBinding by lazy {
         FragmentBandRegisterBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: BandRegisterViewModel by viewModels()
+    private val viewModel by viewModels<BandRegisterViewModel>()
 
     private var bandName: String = ""
     private var bandImage: Uri? = null

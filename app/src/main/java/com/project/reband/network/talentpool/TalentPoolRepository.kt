@@ -6,9 +6,10 @@ import com.project.reband.data.talentpool.TalentPoolDetailData
 import com.project.reband.test.getTestTalentPoolDetailList
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
 
-class TalentPoolRepository() {
+class TalentPoolRepository @Inject constructor() {
     private val apis = RetrofitService.retrofit.create(TalentPoolService::class.java)
 
     /**

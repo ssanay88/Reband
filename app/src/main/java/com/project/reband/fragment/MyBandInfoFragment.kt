@@ -16,10 +16,12 @@ import com.project.reband.adapter.BandMemberAdapter
 import com.project.reband.databinding.FragmentMyBandInfoBinding
 import com.project.reband.viewmodel.MyBandInfoFragmentViewModel
 import com.project.reband.viewmodel.ShowDialog
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MyBandInfoFragment(
     private val userGrade: String
 ): Fragment() {
@@ -28,7 +30,7 @@ class MyBandInfoFragment(
         FragmentMyBandInfoBinding.inflate(layoutInflater)
     }
 
-    private val viewModel : MyBandInfoFragmentViewModel by viewModels()
+    private val viewModel by viewModels<MyBandInfoFragmentViewModel>()
     private val dataStore = GlobalApplication.getInstance().getDataStore()
 
     override fun onCreate(savedInstanceState: Bundle?) {

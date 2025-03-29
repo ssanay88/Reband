@@ -14,9 +14,11 @@ import com.project.reband.R
 import com.project.reband.adapter.LocationSpinnerAdapter
 import com.project.reband.data.etc.LocationSecondDepth
 import com.project.reband.databinding.FragmentSearchBandFilterBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.map
 import java.util.Objects
 
+@AndroidEntryPoint
 class SearchBandFilterFragment : Fragment() {
 
     private val binding: FragmentSearchBandFilterBinding by lazy {

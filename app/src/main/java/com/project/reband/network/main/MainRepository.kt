@@ -7,8 +7,10 @@ import com.project.reband.data.etc.LocationFirstDepthData
 import com.project.reband.data.etc.LocationSecondDepthData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class MainRepository {
+class MainRepository @Inject constructor() {
 
     private val apis = RetrofitService.retrofit.create(MainService::class.java)
 

@@ -29,7 +29,7 @@ class PoolFragment : Fragment() {
         FragmentPoolBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: PoolFragmentViewModel by viewModels()
+    private val viewModel by viewModels<PoolFragmentViewModel>()
     private val clickHandler = ClickHandler()
     private var poolFragmentList = mutableListOf<PoolData>()
 

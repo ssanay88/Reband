@@ -12,15 +12,17 @@ import com.project.reband.adapter.MyApplyListAdapter
 import com.project.reband.data.recruitment.MyApplyEntry
 import com.project.reband.databinding.FragmentMyApplyBinding
 import com.project.reband.viewmodel.MyApplyFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MyApplyFragment : Fragment() {
 
     private val binding : FragmentMyApplyBinding by lazy {
         FragmentMyApplyBinding.inflate(layoutInflater)
     }
 
-    private val viewModel : MyApplyFragmentViewModel by viewModels()
+    private val viewModel by viewModels<MyApplyFragmentViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

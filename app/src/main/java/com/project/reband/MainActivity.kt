@@ -28,11 +28,13 @@ import com.project.reband.fragment.ErrorDialog
 import com.project.reband.fragment.HiringRegisterFragment
 import com.project.reband.fragment.ProfileRegisterFragment
 import com.project.reband.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val mainBinding: ActivityMainBinding by lazy {

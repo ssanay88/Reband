@@ -7,13 +7,17 @@ import com.project.reband.data.talentpool.PoolData
 import com.project.reband.network.talentpool.TalentPoolRepository
 import com.project.reband.utils.MutableEventFlow
 import com.project.reband.utils.asEventFlow
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PoolFragmentViewModel : ViewModel() {
-    private val talentPoolRepository = TalentPoolRepository()
+@HiltViewModel
+class PoolFragmentViewModel @Inject constructor(
+    private val talentPoolRepository: TalentPoolRepository
+) : ViewModel() {
 
     private val _talentPool = MutableStateFlow<List<PoolData.TalentPool>>(emptyList())
     val talentPool = _talentPool.asStateFlow()

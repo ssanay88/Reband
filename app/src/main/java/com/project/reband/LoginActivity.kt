@@ -47,7 +47,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class LoginActivity : ComponentActivity() {
 
-    private val viewModel: LoginActivityViewModel by viewModels()
+    private val viewModel by viewModels<LoginActivityViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

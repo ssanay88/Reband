@@ -25,7 +25,7 @@ class PoolDetailFragment(
         FragmentPoolDetailBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: PoolDetailFragmentViewModel by viewModels()
+    private val viewModel by viewModels<PoolDetailFragmentViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

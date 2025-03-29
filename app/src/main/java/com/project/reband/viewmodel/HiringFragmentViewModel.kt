@@ -7,13 +7,17 @@ import com.project.reband.data.recruitment.HiringData
 import com.project.reband.network.recruitment.RecruitmentRepository
 import com.project.reband.utils.MutableEventFlow
 import com.project.reband.utils.asEventFlow
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HiringFragmentViewModel : ViewModel() {
-    private val recruitmentRepository = RecruitmentRepository()
+@HiltViewModel
+class HiringFragmentViewModel @Inject constructor(
+    private val recruitmentRepository: RecruitmentRepository
+) : ViewModel() {
 
     private val _recruitmentList = MutableStateFlow<List<HiringData.Recruitment>?>(null)
     val recruitmentList = _recruitmentList.asStateFlow()

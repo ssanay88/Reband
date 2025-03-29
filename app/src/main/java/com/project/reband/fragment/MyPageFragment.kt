@@ -22,12 +22,13 @@ import com.project.reband.GlobalApplication
 import com.project.reband.R
 import com.project.reband.viewmodel.LoginState
 import com.project.reband.viewmodel.MyPageFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.zip
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class MyPageFragment() : Fragment() {
 
     companion object {
@@ -40,7 +41,7 @@ class MyPageFragment() : Fragment() {
         FragmentMyPageBinding.inflate(layoutInflater)
     }
 
-    private val viewModel : MyPageFragmentViewModel by viewModels()
+    private val viewModel by viewModels<MyPageFragmentViewModel>()
     private val dataStore = GlobalApplication.getInstance().getDataStore()
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -18,12 +18,14 @@ import com.project.reband.databinding.FragmentHiringBinding
 import com.project.reband.test.getTestRecruitmentList
 import com.project.reband.viewmodel.HiringFragmentViewModel
 import com.project.reband.viewmodel.HireSortBtnClickEvent
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class HiringFragment() : Fragment() {
 
-    private val viewModel: HiringFragmentViewModel by viewModels()
+    private val viewModel by viewModels<HiringFragmentViewModel>()
     private val clickHandler = ClickHandler()
 
     private var _binding: FragmentHiringBinding? = null
@@ -94,7 +96,10 @@ class HiringFragment() : Fragment() {
 //                        addAll(it)
 //                    }
 //                    hiringBandAdapter.submitList(list)
-                    val list = getTestRecruitmentList()
+                    val list = mutableListOf<HiringData>().apply {
+                        add(HiringData.HireSortData)
+                        addAll(getTestRecruitmentList())
+                    }
                     hiringBandAdapter.submitList(list)
                 }
             }

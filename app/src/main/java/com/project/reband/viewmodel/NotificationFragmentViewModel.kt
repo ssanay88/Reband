@@ -3,11 +3,15 @@ package com.project.reband.viewmodel
 import androidx.lifecycle.ViewModel
 import com.project.reband.data.etc.NotificationData
 import com.project.reband.network.etc.EtcRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import javax.inject.Inject
 
-class NotificationFragmentViewModel : ViewModel() {
-    private val repository = EtcRepository()
+@HiltViewModel
+class NotificationFragmentViewModel @Inject constructor(
+    private val repository: EtcRepository
+) : ViewModel() {
 
     private val _notificationList = MutableStateFlow<List<NotificationData.Notification>?>(null)
     val notificationList = _notificationList.asStateFlow()

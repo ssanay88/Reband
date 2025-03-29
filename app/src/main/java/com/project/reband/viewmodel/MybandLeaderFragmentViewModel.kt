@@ -6,14 +6,17 @@ import com.project.reband.data.band.BandDetailData
 import com.project.reband.network.band.BandRepository
 import com.project.reband.utils.MutableEventFlow
 import com.project.reband.utils.asEventFlow
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MybandLeaderFragmentViewModel: ViewModel() {
-
-    private val repository = BandRepository()
+@HiltViewModel
+class MybandLeaderFragmentViewModel @Inject constructor(
+    private val repository: BandRepository
+): ViewModel() {
 
     private val _bandInfo = MutableStateFlow<BandDetailData.BandDetail?>(null)
     val bandInfo = _bandInfo.asStateFlow()

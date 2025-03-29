@@ -7,13 +7,17 @@ import com.project.reband.data.etc.NoticeData
 import com.project.reband.data.etc.TermsOfServiceData
 import com.project.reband.data.user.UserData
 import com.project.reband.network.etc.EtcRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MyPageFragmentViewModel : ViewModel() {
-    private val etcRepository = EtcRepository()
+@HiltViewModel
+class MyPageFragmentViewModel @Inject constructor(
+    private val etcRepository: EtcRepository
+) : ViewModel() {
 
     private val _loginState = MutableStateFlow<LoginState?>(null)
     val loginState = _loginState.asStateFlow()

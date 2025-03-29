@@ -26,17 +26,19 @@ import com.project.reband.databinding.FragmentMyPageBinding
 import com.project.reband.databinding.FragmentProfileRegisterBinding
 import com.project.reband.utils.Util
 import com.project.reband.viewmodel.ProfileRegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ProfileRegisterFragment(): Fragment() {
 
     private val binding: FragmentProfileRegisterBinding by lazy {
         FragmentProfileRegisterBinding.inflate(layoutInflater)
     }
 
-    private val viewModel: ProfileRegisterViewModel by viewModels()
+    private val viewModel by viewModels<ProfileRegisterViewModel>()
     private val dataStore = GlobalApplication.getInstance().getDataStore()
 
     private var nickname: String = ""

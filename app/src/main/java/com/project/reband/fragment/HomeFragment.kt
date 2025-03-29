@@ -20,14 +20,15 @@ import com.project.reband.event.HomeClickEvent
 import com.project.reband.network.recruitment.RecruitmentRepository
 import com.project.reband.test.getTestRecruitmentList
 import com.project.reband.viewmodel.HomeFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private val viewModel: HomeFragmentViewModel by viewModels()
+    private val viewModel by viewModels<HomeFragmentViewModel>()
     private val clickHandler = ClickHandler()
     private val dataStore = GlobalApplication.getInstance().getDataStore()
 

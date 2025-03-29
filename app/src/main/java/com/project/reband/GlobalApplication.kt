@@ -3,7 +3,9 @@ package com.project.reband
 import android.app.Application
 import com.kakao.sdk.common.KakaoSdk
 import com.navercorp.nid.NaverIdLoginSDK
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 class GlobalApplication : Application() {
 
     private lateinit var dataStore : DataStoreRepository

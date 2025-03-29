@@ -13,15 +13,17 @@ import com.project.reband.databinding.FragmentBandRegisterBinding
 import com.project.reband.databinding.FragmentMyBandLeaderBinding
 import com.project.reband.viewmodel.MybandLeaderBtnClickEvent
 import com.project.reband.viewmodel.MybandLeaderFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MybandLeaderFragment : Fragment() {
 
     private val binding : FragmentMyBandLeaderBinding by lazy {
         FragmentMyBandLeaderBinding.inflate(layoutInflater)
     }
 
-    private val viewModel : MybandLeaderFragmentViewModel by viewModels()
+    private val viewModel by viewModels<MybandLeaderFragmentViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

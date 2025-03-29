@@ -11,16 +11,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.reband.adapter.NotificationAdapter
 import com.project.reband.databinding.FragmentNotificationBinding
 import com.project.reband.viewmodel.NotificationFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class NotificationFragment: Fragment() {
 
     private val binding : FragmentNotificationBinding by lazy {
         FragmentNotificationBinding.inflate(layoutInflater)
     }
 
-    private val viewModel : NotificationFragmentViewModel by viewModels()
+    private val viewModel by viewModels<NotificationFragmentViewModel>()
     private val notificationAdapter by lazy { NotificationAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
