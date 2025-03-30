@@ -26,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -43,6 +44,7 @@ import com.project.reband.viewmodel.LoginResult
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginActivity : ComponentActivity() {
@@ -134,7 +136,8 @@ fun LoginScreen(modifier: Modifier = Modifier, viewModel: LoginActivityViewModel
             Image(
                 painter = painterResource(R.drawable.kakao_login_btn_full),
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth().height(80.dp).padding(vertical = 4.dp)
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxWidth().height(80.dp).padding(vertical = 4.dp, horizontal = 50.dp)
                     .clickable {
                         viewModel.startKakaoLogin(context)
                     }
@@ -142,7 +145,8 @@ fun LoginScreen(modifier: Modifier = Modifier, viewModel: LoginActivityViewModel
             Image(
                 painter = painterResource(R.drawable.naver_login_btn_full),
                 contentDescription = null,
-                modifier = Modifier.fillMaxWidth().height(86.dp).padding(vertical = 4.dp)
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxWidth().height(86.dp).padding(vertical = 4.dp, horizontal = 50.dp)
                     .clickable {
                         viewModel.startNaverLogin(context)
                     }

@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kakao.sdk.auth.AuthApiClient
 import com.project.reband.GlobalApplication
 import com.project.reband.R
 import com.project.reband.RecruitingBandItemDecoration
@@ -105,11 +104,11 @@ class HomeFragment : Fragment() {
 
     private fun SearchNewMemberAdd() {
         lifecycleScope.launch {
-            val userGrade = GlobalApplication.getInstance().getDataStore().userGrade.first()
-            val bandNo = GlobalApplication.getInstance().getDataStore().bandNo.first()
+            val jwtToken = dataStore.jwtToken.first()
+            val userGrade = dataStore.userGrade.first()
+            val bandNo = dataStore.bandNo.first()
 
-
-            if (AuthApiClient.instance.hasToken()) {
+            if (jwtToken.isNotEmpty()) {
                 if (bandNo.isNotEmpty()) {
                     if (userGrade == "LEADER") {
 

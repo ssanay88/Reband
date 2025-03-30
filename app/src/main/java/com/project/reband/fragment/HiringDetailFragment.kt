@@ -30,11 +30,12 @@ class HiringDetailFragment(
     private val bandNo : Int
 ) : Fragment() {
 
+    private val viewModel by viewModels<HiringDetailFragmentViewModel>()
+    private val dataStore = GlobalApplication.getInstance().getDataStore()
+
     private val hiringDetailBinding: FragmentHiringDetailBinding by lazy {
         FragmentHiringDetailBinding.inflate(layoutInflater)
     }
-
-    private val viewModel by viewModels<HiringDetailFragmentViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         lifecycleScope.launch {
@@ -67,9 +68,10 @@ class HiringDetailFragment(
             // 지원하기
             btnContact.setOnClickListener {
                 lifecycleScope.launch {
-                    val bandNo = GlobalApplication.getInstance().getDataStore().bandNo.first()
+                    val jwtToken = dataStore.jwtToken.first()
+                    val bandNo = dataStore.bandNo.first()
 
-                    if (AuthApiClient.instance.hasToken()) {
+                    if (jwtToken.isNotEmpty()) {
                         if (bandNo == "") {
                             val confirmDialog = ConfirmDialog(
                                 title = "밴드 지원",

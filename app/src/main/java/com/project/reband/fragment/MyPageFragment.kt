@@ -180,16 +180,19 @@ class MyPageFragment() : Fragment() {
 
             // 알림
             tvNotification.setOnClickListener {
-                if (AuthApiClient.instance.hasToken()) {
-                    activity?.supportFragmentManager?.beginTransaction()
-                        ?.add(R.id.main_fragment_container, NotificationFragment())?.commit()
-                } else {
-                    val errorDialog = ErrorDialog(
-                        title = "오류",
-                        content = "로그인 후 이용해주세요"
-                    )
-                    errorDialog.show(requireActivity().supportFragmentManager, "errorDialog")
+                lifecycleScope.launch {
+                    if (dataStore.jwtToken.first().isNotEmpty()) {
+                        activity?.supportFragmentManager?.beginTransaction()
+                            ?.add(R.id.main_fragment_container, NotificationFragment())?.commit()
+                    } else {
+                        val errorDialog = ErrorDialog(
+                            title = "오류",
+                            content = "로그인 후 이용해주세요"
+                        )
+                        errorDialog.show(requireActivity().supportFragmentManager, "errorDialog")
+                    }
                 }
+
             }
 
             tvNotice.setOnClickListener {

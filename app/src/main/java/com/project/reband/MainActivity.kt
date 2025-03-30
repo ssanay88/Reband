@@ -32,6 +32,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -133,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         mainBinding.fabRecruitMember.setOnClickListener {
             // 밴드원 모집
             lifecycleScope.launch {
-                if (AuthApiClient.instance.hasToken()) {
+                if (dataStore.jwtToken.first().isNotEmpty()) {
                     dataStore.bandNo.collect {
                         if (it.isNotEmpty()) {
                             dataStore.userGrade.collect {
@@ -180,7 +181,7 @@ class MainActivity : AppCompatActivity() {
             // 없는 경우 -> 프로필 정보 등록 유무 -> 인재풀에 등록된 경우 , 신규 등록인 경우 분리
             // 프로필 정보 등록이 되지 않은 경우
             lifecycleScope.launch {
-                if (AuthApiClient.instance.hasToken()) {
+                if (dataStore.jwtToken.first().isNotEmpty()) {
                     dataStore.bandNo.collect {
                         if (it.isNotEmpty()) {
                             val errorDialog = ErrorDialog(
