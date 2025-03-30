@@ -6,9 +6,10 @@ import com.project.reband.data.ProfileInfo
 import com.project.reband.data.member.MemberData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
 
-class ProfileRepository {
+class ProfileRepository @Inject constructor() {
 
     private val apis = RetrofitService.retrofit.create(ProfileService::class.java)
 
