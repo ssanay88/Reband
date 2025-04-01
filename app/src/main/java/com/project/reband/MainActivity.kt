@@ -67,7 +67,9 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-
+        supportFragmentManager.addOnBackStackChangedListener {
+            hideFabBtn()
+        }
 
     }
 
@@ -89,6 +91,7 @@ class MainActivity : AppCompatActivity() {
             setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.nav_home -> {
+                        hideFabBtn()
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.main_fragment_container, HomeFragment())
                             .commit()
@@ -96,31 +99,26 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.nav_hiring -> {
+                        hideFabBtn()
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.main_fragment_container, HiringFragment()).commit()
                         true
                     }
 
                     R.id.nav_add -> {
-                        if (isFabVisible) {
-                            mainBinding.fabRegisterPool.hide()
-                            mainBinding.fabRecruitMember.hide()
-                            isFabVisible = false
-                        } else {
-                            mainBinding.fabRegisterPool.show()
-                            mainBinding.fabRecruitMember.show()
-                            isFabVisible = true
-                        }
+                        setFabBtnVisibility()
                         true
                     }
 
                     R.id.nav_pool -> {
+                        hideFabBtn()
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.main_fragment_container, PoolFragment()).commit()
                         true
                     }
 
                     R.id.nav_my_page -> {
+                        hideFabBtn()
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.main_fragment_container, MyPageFragment()).commit()
                         true
@@ -228,6 +226,26 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+        }
+    }
+
+    private fun setFabBtnVisibility() {
+        if (isFabVisible) {
+            mainBinding.fabRegisterPool.hide()
+            mainBinding.fabRecruitMember.hide()
+            isFabVisible = false
+        } else {
+            mainBinding.fabRegisterPool.show()
+            mainBinding.fabRecruitMember.show()
+            isFabVisible = true
+        }
+    }
+
+    private fun hideFabBtn() {
+        if (isFabVisible) {
+            mainBinding.fabRegisterPool.hide()
+            mainBinding.fabRecruitMember.hide()
+            isFabVisible = false
         }
     }
 

@@ -7,7 +7,9 @@ import com.project.reband.data.band.BandMemberModifyData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class BandRepository @Inject constructor() {
 
     private val apis = RetrofitService.retrofit.create(BandService::class.java)

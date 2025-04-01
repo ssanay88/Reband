@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
+@Singleton
 class MainRepository @Inject constructor() {
 
     private val apis = RetrofitService.retrofit.create(MainService::class.java)

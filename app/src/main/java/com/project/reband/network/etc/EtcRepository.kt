@@ -8,7 +8,9 @@ import com.project.reband.data.user.UserInfoData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class EtcRepository @Inject constructor() {
     private val apis = RetrofitService.retrofit.create(EtcService::class.java)
 

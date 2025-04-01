@@ -9,7 +9,9 @@ import com.project.reband.network.main.MainService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class IntroRepository @Inject constructor() {
 
     private val apis = RetrofitService.retrofit.create(MainService::class.java)

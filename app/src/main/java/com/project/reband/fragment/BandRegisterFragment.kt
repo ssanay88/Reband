@@ -9,12 +9,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.project.reband.R
+import com.project.reband.adapter.LocationSpinnerAdapter
 import com.project.reband.databinding.FragmentBandRegisterBinding
 import com.project.reband.viewmodel.BandRegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,6 +69,59 @@ class BandRegisterFragment : Fragment() {
     ): View? {
 
         binding.apply {
+
+            regionList.apply {
+                val locationList = resources.getStringArray(R.array.LocationList)
+
+                val mAdapter = LocationSpinnerAdapter(
+                    requireContext(),
+                    R.layout.item_spinner_location,
+                    locationList
+                )
+                adapter = mAdapter
+
+                onItemSelectedListener =
+                    object : AdapterView.OnItemSelectedListener {
+                        override fun onItemSelected(
+                            parent: AdapterView<*>?, view: View?, position: Int, id: Long
+                        ) {
+                            val location2List = when (locationList[position]) {
+                                "전라북도" -> resources.getStringArray(R.array.Jeollabukdo)
+                                "제주특별자치도" -> resources.getStringArray(R.array.Jeju)
+                                "대전광역시" -> resources.getStringArray(R.array.Daejeon)
+                                "부산광역시" -> resources.getStringArray(R.array.Busan)
+                                "강원도" -> resources.getStringArray(R.array.Gangwondo)
+                                "전라남도" -> resources.getStringArray(R.array.Jeollanamdo)
+                                "인천광역시" -> resources.getStringArray(R.array.Incheon)
+                                "광주광역시" -> resources.getStringArray(R.array.Gwangju)
+                                "울산광역시" -> resources.getStringArray(R.array.Ulsan)
+                                "대구광역시" -> resources.getStringArray(R.array.Daegu)
+                                "경상북도" -> resources.getStringArray(R.array.Gyeongsangbukdo)
+                                "충청북도" -> resources.getStringArray(R.array.Chungcheongbukdo)
+                                "경상남도" -> resources.getStringArray(R.array.Gyeongsangnamdo)
+                                "충청남도" -> resources.getStringArray(R.array.Chungcheongnamdo)
+                                "경기도" -> resources.getStringArray(R.array.Gyeonggido)
+                                "서울특별시" -> resources.getStringArray(R.array.Seoul)
+                                else -> resources.getStringArray(R.array.Sejong)
+                            }
+
+                            binding.detailRegionList.apply {
+                                val detailAdapter = LocationSpinnerAdapter(
+                                    parent!!.context,
+                                    R.layout.item_spinner_location,
+                                    location2List
+                                )
+                                adapter = detailAdapter
+                            }
+                        }
+
+                        override fun onNothingSelected(p0: AdapterView<*>?) {
+                            TODO("Not yet implemented")
+                        }
+
+                    }
+            }
+
             btnCancel.setOnClickListener {
                 back()
             }
