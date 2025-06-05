@@ -17,8 +17,8 @@ class GlobalApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        KakaoSdk.init(this, "b27a74b026594e2bc6ddc61b64837bd8")
-        NaverIdLoginSDK.initialize(this, getString(R.string.naver_client_id), getString(R.string.naver_client_secret), getString(R.string.naver_client_name))
+        KakaoSdk.init(this, BuildConfig.KAKAO_API_KEY)
+        NaverIdLoginSDK.initialize(this, BuildConfig.NAVER_CLIENT_ID, BuildConfig.NAVER_CLIENT_SECRET, BuildConfig.NAVER_CLIENT_NAME)
         globalApplication = this
         dataStore = DataStoreRepository(this)
     }
